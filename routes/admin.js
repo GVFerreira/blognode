@@ -60,4 +60,14 @@ router.post("/categories/new", (req, res) => {
     
 })
 
+router.get("categories/edit/:id", (req, res) => {
+    Category.findOne({_id: req.params.id}).then((category) => {
+        res.render("admin/editcategories", {category: category})
+    }).catch((erro) => {
+        req.flash("error_msg", "Essa categoria não existe")
+        res.redirect("/admin/categories")
+    })
+    
+})
+
 module.exports = router
