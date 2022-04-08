@@ -36,7 +36,11 @@
         app.set("view engine", "handlebars")
 
     //Mongoose
-        mongoose.connect("mongodb://localhost/blognode").then(() => console.log("MongoDB connected...")).catch((erro) => console.log(`Erro: ${erro}`))
+        mongoose.connect("mongodb://localhost/blognode").then(() => {
+            console.log("MongoDB connected...")
+        }).catch((erro) => {
+            console.log(`Erro: ${erro}`)
+        })
 
     //Public
         app.use(express.static(path.join(__dirname, "public")))
