@@ -8,10 +8,6 @@ router.get("/", (req, res) => {
     res.render("admin/index")
 })
 
-router.get("/posts", (req, res) => {
-    res.send("Posts page")
-})
-
 router.get("/categories", (req, res) => {
     Category.find().sort({date: "DESC"}).then((categories) => {
         res.render("admin/categories", { categories: categories})
@@ -97,6 +93,35 @@ router.post("/categories/edit", (req, res) => {
         req.flash("error_msg", "Houve um erro ao editar a categoria")
         res.redirect("/admin/categories")
     })
+})
+
+router.post("/categories/delete", (req, res) => {
+    Category.deleteOne({_id: req.body.id}).then(() => {
+        req.flash("sucess_msg", "Categoria excluída com sucesso")
+        res.redirect("/admin/categories")
+    }).catch(() => {
+        req.flash("error_msg", "Houve um erro ao deletar essasa categoria")
+        res.send("/admin/categories")
+    })
+})
+
+router.get("/posts", (req, res) => {
+    res.render("admin/posts")
+})
+
+router.get("/posts/add", (req, res) => {
+    Category.find().then((categories) => {
+        res.render("admin/addposts", {categories: categories})
+    }).catch(() => {
+        req.flash("error_msg", "Houve um erro ao carregar o formulário")
+        res.redirect("admin/posts")
+    })
+    
+})
+
+//PAREI NO REGISTRO DA POSTAGEM """"""""""
+router.post("/posts/new", (req, res) => {
+
 })
 
 module.exports = router

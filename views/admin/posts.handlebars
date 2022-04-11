@@ -1,0 +1,13 @@
+<a href="/admin/posts/add"><button class="btn btn-success">Nova postagem</button></a>
+<hr>
+<h1>Lista de postagens</h1>
+
+{{#each posts}}
+
+    {{else}}
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-4">Não há nenhuma postagem registrada</h4>
+            </div>
+        </div>
+{{/each}}

@@ -8,10 +8,18 @@
             <h4>{{name}}</h4>
             <p>Slug: {{slug}}</p>
             <p>Data de criação: {{date}}</p>
-            <a href="/admin/categories/edit/{{_id}}"><button class="btn btn-warning">Editar</button></a>
-            <a href="/admin/categories/edit/{{_id}}"><button class="btn btn-danger">Excluir</button></a>
+            <a href="/admin/categories/edit/{{_id}}"><button class="btn btn-warning">Editar categoria</button></a>
+            <form action="/admin/categories/delete" method="POST">
+                <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-danger mt-4">Excluir categoria</button>
+            </form>
         </div>
     </div>
     {{else}}
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-4">Não há nenhuma categoria registrada</h4>
+            </div>
+        </div>
 {{/each}}
 
