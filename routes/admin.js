@@ -43,17 +43,18 @@ router.post("/categories/new", (req, res) => {
     }
 
     //validando se o slug está vazio, indefinido ou nulo
-    if(!req.body.slug || typeof !req.body.slug == undefined || req.body.slug == null) {
+    /*if(!req.body.slug || typeof !req.body.slug == undefined || req.body.slug == null) {
         erros.push({texto: "Slug inválido"})
-    }
+    }*/
 
     //verificando se ocorreu algum erro, senão cadastrará no banco de dados
     if(erros.length > 0) {
         res.render("admin/addcategories", {erros: erros})
     } else {
+
         const newCategory = {
             name: req.body.name,
-            slug: req.body.slug
+            slug: req.body.name.toLowerCase().replace(/"|á|â|à|ã|ä"/g, "a").replace(/"|é|ê|è|ë"/g, "e").replace(/"|í|ì|î|ï"/g, "i").replace(/"|ó|ò|ô|õ|ø|ö"/g, "o").replace(/"|ú|ù|û|ü"/g, "u").replace(/ç/g, "c").replace(/ñ/g, "n").replace(/ý/g, "y").replace(/ /g, "-")
         }
     
         new Category(newCategory).save().then(() => {
@@ -90,17 +91,17 @@ router.post("/categories/edit", (req, res) => {
             erros.push({texto: "O nome inserido é muito pequeno"})
         }
 
-        //validando se o slug está vazio, indefinido ou nulo
-        if(!req.body.slug || typeof !req.body.slug == undefined || req.body.slug == null) {
-            erros.push({texto: "Slug inválido"})
-        }
+        // //validando se o slug está vazio, indefinido ou nulo
+        // if(!req.body.slug || typeof !req.body.slug == undefined || req.body.slug == null) {
+        //     erros.push({texto: "Slug inválido"})
+        // }
     
         //verificando se ocorreu algum erro, senão editará no banco de dados
         if(erros.length > 0) {
             res.render("admin/editcategories", {erros: erros})
         } else {
             category.name = req.body.name
-            category.slug = req.body.slug
+            category.slug = req.body.name.toLowerCase().replace(/"|á|â|à|ã|ä"/g, "a").replace(/"|é|ê|è|ë"/g, "e").replace(/"|í|ì|î|ï"/g, "i").replace(/"|ó|ò|ô|õ|ø|ö"/g, "o").replace(/"|ú|ù|û|ü"/g, "u").replace(/"ç"/g, "c").replace(/"ñ"/g, "n").replace(/"ý"/g, "y").replace(/ /g, "-")
 
             category.save().then(() => {
                 req.flash("success_msg", "Categoria editada com sucesso")
@@ -167,7 +168,7 @@ router.post("/posts/new", (req, res) => {
     } else {
         const newPost = {
             title: req.body.title,
-            slug: req.body.slug,
+            slug: req.body.title.toLowerCase().replace(/"|á|â|à|ã|ä"/g, "a").replace(/"|é|ê|è|ë"/g, "e").replace(/"|í|ì|î|ï"/g, "i").replace(/"|ó|ò|ô|õ|ø|ö"/g, "o").replace(/"|ú|ù|û|ü"/g, "u").replace(/"ç"/g, "c").replace(/"ñ"/g, "n").replace(/"ý"/g, "y").replace(/ /g, "-"),
             description: req.body.description,
             content: req.body.content,
             category: req.body.category
