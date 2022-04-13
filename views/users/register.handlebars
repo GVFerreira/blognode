@@ -1,0 +1,32 @@
+{{#each errors}}
+    <div class="alert alert-danger">{{text}}</div>
+    {{else}}
+
+{{/each}}
+
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center">Crie sua conta no Blog Node.JS</h2>
+    </div>
+    <div class="card-body">
+        <form action="/users/new" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" class="form-control mb-4" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" class="form-control mb-4" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" name="password" class="form-control mb-4" required>
+
+            <label for="password2">Repita a senha:</label>
+            <input type="password" name="password2" class="form-control mb-4" required>
+
+            <button type="submit" class="btn btn-success">Criar conta</button>
+            
+        </form>
+        <br>
+        <span>Já possui conta? </span><a href="/users/register">Entre aqui!</a>
+    </div>
+</div>

@@ -3,6 +3,20 @@
 <h1>Lista de postagens</h1>
 
 {{#each posts}}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>{{title}}</h4>
+            <p>Slug: {{slug}}</p>
+            <p>Categoria: {{category.name}}</p>
+            <p>Descrição: {{description}}</p>
+            <p>{{content}}</p>
+            <a href="/admin/posts/edit/{{_id}}"><button class="btn btn-warning">Editar postagem</button></a>
+            <form action="/admin/posts/delete" method="POST">
+                <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="btn btn-danger mt-4">Excluir postagem</button>
+            </form>
+        </div>
+    </div>
 
     {{else}}
         <div class="card">

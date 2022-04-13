@@ -8,19 +8,19 @@
     <div class="card-body">
         <form action="/admin/posts/new" method="post">
             <label for="title">Titulo:</label>
-            <input type="text" name="title" class="form-control mb-4">
+            <input type="text" name="title" class="form-control mb-4" required>
 
             <label for="slug">Slug:</label>
             <input type="text" name="slug" class="form-control mb-4" disabled="disabled">
 
             <label for="description">Descrição:</label>
-            <input type="text" name="description" class="form-control mb-4">
+            <input type="text" name="description" class="form-control mb-4" required>
 
             <label for="content">Conteúdo:</label>
-            <textarea name="content" class="form-control mb-4" rows="8"></textarea>
+            <textarea name="content" class="form-control mb-4" rows="8" required></textarea>
 
             <label for="category">Categoria:</label>
-            <select name="category" class="form-control">
+            <select name="category" class="form-control" required>
                 {{#each categories}}
                     <option value="{{_id}}">{{name}}</option>
                 {{else}}
