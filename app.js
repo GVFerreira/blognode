@@ -20,6 +20,9 @@
     const passport = require("passport")
         require("./config/auth")(passport)
 
+    //db
+    const db = require("./config/db")
+
 
 //Configs
     //Sessão
@@ -53,7 +56,7 @@
         app.set("view engine", "handlebars")
 
     //Mongoose
-        mongoose.connect("mongodb://localhost/blognode").then(() => {
+        mongoose.connect(db.mongoURI).then(() => {
             console.log("MongoDB connected...")
         }).catch((erro) => {
             console.log(`Erro: ${erro}`)
