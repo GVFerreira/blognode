@@ -9,9 +9,19 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/">Home</a>          
         </li>
+        {{#if user._id == 1}}
+        <li class="nav-item"></li>
+          <a href="/admin/categories" class="nav-link">Categorias</a>
+        </li>
+
+        <li class="nav-item"></li>
+          <a href="/admin/posts" class="nav-link">Postagens</a>
+        </li>
+        {{else}}
         <li class="nav-item"></li>
           <a href="/categories" class="nav-link">Categorias</a>
         </li>
+        {{/if}}
         {{#if user}}
           <li class="nav-item"></li>
             <a href="/users/logout" class="nav-link">Sair</a>
