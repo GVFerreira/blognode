@@ -43,7 +43,6 @@
             res.locals.error_msg = req.flash("error_msg")
             res.locals.error = req.flash("error")
             res.locals.user = req.user || null
-
             next()
         })
 
