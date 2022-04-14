@@ -1,8 +1,11 @@
 <div class="jumbotron">
-  <h1 class="display-4">Sejam bem-vindos ao Blog Node.JS</h1>
-  <p class="lead">Este é um blog foi criado exclusivamente para prática de estudos em Node.JS, Express e MongoDB.</p>
-  <hr class="my-4">
-  <a class="btn btn-success" href="/users/register" role="button">Crie uma conta</a>
+  <h1 class="display-4 mb-4">Sejam bem-vindos ao Blog Node.JS</h1>
+  <p class="lead">Este é um que blog foi criado exclusivamente para prática de estudos em Node.JS, Express e MongoDB. Onde foi trabalhado a análise, desenvolvimento e depoly da aplicação.</p>
+  {{#if user}}
+
+  {{else}}
+    <a class="btn btn-success" href="/users/register" role="button">Crie uma conta</a>
+  {{/if}}
 </div>
 
 <h2 class="mb-3 mt-5">Postagens recentes:</h2>
