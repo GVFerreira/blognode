@@ -56,7 +56,7 @@
         app.set("view engine", "handlebars")
 
     //Mongoose
-        mongoose.connect(db.mongoURI).then(() => {
+        mongoose.connect("mongodb+srv://gust4v0:rWe8qg8cwWoQ2gJw@blognode.5k7cp.mongodb.net/blognode?retryWrites=true&w=majority").then(() => {
             console.log("MongoDB connected...")
         }).catch((erro) => {
             console.log(`Erro: ${erro}`)
