@@ -27,7 +27,7 @@
 //Configs
     //Sessão
         app.use(session({
-            secret: "123456",
+            secret: process.env.NODE_SECRET
             resave: true,
             saveUninitialized: true
         }))
@@ -55,7 +55,7 @@
         app.set("view engine", "handlebars")
 
     //Mongoose
-        mongoose.connect("mongodb+srv://gust4v0:rWe8qg8cwWoQ2gJw@blognode.5k7cp.mongodb.net/blognode?retryWrites=true&w=majority").then(() => {
+        mongoose.connect(process.env.MONGODB_URL).then(() => {
             console.log("MongoDB connected...")
         }).catch((erro) => {
             console.log(`Erro: ${erro}`)
